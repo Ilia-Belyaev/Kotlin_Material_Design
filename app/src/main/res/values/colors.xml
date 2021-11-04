@@ -15,4 +15,5 @@
     <color name="color_gray">#66000000</color>
     <color name="chip_color">#D19418</color>
     <color name="chip_color_night">#5211AC</color>
+    <color name="colorAccent40Alfa">#662962FF</color>
 </resources>

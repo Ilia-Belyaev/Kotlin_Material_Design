@@ -1,14 +1,10 @@
 package com.example.app.material.ui.picture
 
 import android.content.Intent
-import android.icu.text.SimpleDateFormat
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -17,14 +13,12 @@ import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import com.example.app.R
 import com.example.app.material.ui.MainActivity
-import com.example.app.material.ui.chips.ChipsFragment
+import com.example.app.material.ui.api.ApiActivity
+import com.example.app.material.ui.apibottom.ApiBottomActivity
+import com.example.app.material.ui.settings.SettingsFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-
 import kotlinx.android.synthetic.main.main_fragment.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -33,7 +27,7 @@ class PictureOfTheDayFragment : Fragment() {
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProviders.of(this).get(PictureOfTheDayViewModel::class.java)
     }
-    
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.getData()
@@ -56,10 +50,7 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
         setBottomAppBar(view)
-//        lookPhoto()
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -68,13 +59,15 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast("Favourite")
-            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, ChipsFragment())?.addToBackStack(null)?.commit()
+            R.id.app_bar_fav -> activity?.let { startActivity(Intent(it, ApiBottomActivity::class.java)) }
+            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, SettingsFragment())?.addToBackStack(null)?.commit()
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
+            R.id.app_bar_api -> activity?.let { startActivity(Intent(it, ApiActivity::class.java)) }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -105,21 +98,6 @@ class PictureOfTheDayFragment : Fragment() {
             }
         }
     }
-
-//    private fun lookPhoto() {
-//        chipGroup.setOnClickListener {
-//            if(chip1.isChecked){
-//
-//            }else if(chip2.isChecked){
-//
-//            }else if(chip3.isChecked){
-//
-//            }
-//        }
-//    }
-
-
-
 
     private fun setBottomAppBar(view: View) {
         val context = activity as MainActivity
