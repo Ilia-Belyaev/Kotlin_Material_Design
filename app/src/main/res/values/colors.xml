@@ -8,7 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary_v2">#5B136A</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark_v2">#133CAF</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_gray">#66000000</color>
+    <color name="chip_color">#D19418</color>
+    <color name="chip_color_night">#5211AC</color>
 </resources>
