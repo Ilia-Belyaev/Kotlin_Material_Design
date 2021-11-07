@@ -3,7 +3,6 @@ package com.example.app.material.ui.apibottom
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.app.R
-
 import com.example.app.material.ui.api.EarthFragment
 import com.example.app.material.ui.api.MarsFragment
 import com.example.app.material.ui.api.WeatherFragment
