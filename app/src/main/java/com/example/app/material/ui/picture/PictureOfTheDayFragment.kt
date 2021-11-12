@@ -46,7 +46,7 @@ class PictureOfTheDayFragment : Fragment() {
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                //data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
+                data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
         setBottomAppBar(view)
